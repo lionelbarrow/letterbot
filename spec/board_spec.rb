@@ -6,6 +6,12 @@ describe Board do
     b.score(:red).should == 0
   end
 
+  it "maintains a list of letter positions" do
+    b = Board.new("abcde fghij kkkkk pqrst uvwxy")
+    b.letter_positions["f"].should == [6]
+    b.letter_positions["k"].should == [11, 12, 13, 14, 15]
+  end
+
   it "processes a move by a player" do
     b = Board.new("abcde fghij klmno pqrst uvwxy")
     b.move(:red, [6, 1, 3, 5])
