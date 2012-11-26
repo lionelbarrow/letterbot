@@ -13,7 +13,7 @@ describe Tile do
 
   it "can set an owner" do
     t = Tile.new("a", 1)
-    t.owner = :red
+    t.change_owner(:red)
     t.owner.should == :red
   end
 end
