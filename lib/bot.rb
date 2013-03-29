@@ -4,6 +4,7 @@ require "./lib/word_bag"
 class Bot
   def initialize(board)
     @letters = board.tiles.collect {|t| t.letter }
+    @board = board
   end
 
   def available_moves

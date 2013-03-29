@@ -7,13 +7,12 @@ class Board
 
   def initialize(letters)
     @tiles = []
-    @letter_positions = Hash.new([])
-    i = 0
+    @letter_positions = {}
+    i = 1
     letters.split("").each do |letter|
       next if letter.strip == ""
       @tiles << Tile.new(letter, i)
-      puts "letter #{letter}"
-      puts "letter positions #{letter_positions}"
+      @letter_positions[letter] = [] if @letter_positions[letter].nil?
       @letter_positions[letter] << i
       i += 1
     end
@@ -27,7 +26,7 @@ class Board
   end
 
   def score(player)
-   @tiles.select { |tile| tile.owner == player }.length
+    @tiles.select { |tile| tile.owner == player }.length
   end
 
   def _valid_move?(positions)
